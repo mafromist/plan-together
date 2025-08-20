@@ -244,10 +244,10 @@ export default function EventPage() {
 					<thead className='bg-gray-50 text-gray-600'>
 						<tr>
 							<th className='p-2 text-left'>#</th>
-							<th className='p-2 text-left'>Ürün</th>
-							<th className='p-2 text-left'>Senin (+/−)</th>
-							<th className='p-2 text-left'>Katkıda Bulunanlar</th>
-							<th className='p-2 text-left'>Ekleyen</th>
+							<th className='p-2 text-left'>Gönülden Kopanlar</th>
+							<th className='p-2 text-left'>Ekle / Çıkar (+/−)</th>
+							<th className='p-2 text-left'>Yaparım Diyoooo</th>
+							<th className='p-2 text-left'>Ekleyen Yüce Gönül</th>
 						</tr>
 					</thead>
 					<tbody>
