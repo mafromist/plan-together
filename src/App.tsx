@@ -11,14 +11,14 @@ export default function App() {
 				<Outlet />
 			</main>
 
-			<nav className='inset-x-0 bottom-0 border-t bg-white/80 backdrop-blur'>
+			{/* <nav className='inset-x-0 bottom-0 border-t bg-white/80 backdrop-blur'>
 				<div className='mx-auto max-w-screen-sm grid grid-cols-2'>
 					<Link to='/' className='p-3 text-center'>
 						Home
 					</Link>
 				</div>
 				<div style={{ height: 'calc(16px + var(--safe-bottom))' }} />
-			</nav>
+			</nav> */}
 		</div>
 	);
 }
