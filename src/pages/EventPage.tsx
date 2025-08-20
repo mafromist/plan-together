@@ -194,11 +194,11 @@ export default function EventPage() {
 
 	return (
 		<div className='space-y-4'>
-			<div className='flex items-center justify-between gap-3'>
+			<div className='flex flex-col sm:flex-row items-center justify-between gap-3'>
 				<div>
 					<h1 className='text-xl font-bold'>{event.title}</h1>
 					<button onClick={copyLink} className='rounded-lg border px-2 py-1 text-xs'>
-						{copied ? 'Kopyalandı ✓' : 'Linki Kopyala'}
+						{copied ? 'Kopyalandı ✓' : 'Event Linkini Kopyala'}
 					</button>
 				</div>
 				<div className='shrink-0 flex items-center gap-2'>
@@ -210,7 +210,6 @@ export default function EventPage() {
 				</div>
 			</div>
 
-			{/* Ürünler listesi */}
 			<div className='space-y-3'>
 				{items.map((it, idx) => {
 					const mineCount = Math.max(0, mine.get(it.id) || 0);
@@ -219,8 +218,9 @@ export default function EventPage() {
 						.filter(([, q]) => (q || 0) > 0)
 						.map(([n, q]) => `${n} x${q}`)
 						.join(', ');
+
 					return (
-						<div key={it.id} className='rounded-xl border bg-white p-3 shadow-sm'>
+						<div key={it.id} className='w-full rounded-xl border bg-white p-3 shadow-sm'>
 							{/* Üst satır: ürün adı + sil butonu */}
 							<div className='flex justify-between items-center'>
 								<span className='font-medium'>
@@ -230,8 +230,10 @@ export default function EventPage() {
 									Sil
 								</button>
 							</div>
-							{/* Alt satır: katkılar */}
-							<div className='mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm'>
+
+							{/* Alt satır: mobilde dikey, genişte yatay */}
+							<div className='mt-2 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 text-sm'>
+								{/* Sol: + / - kontrolleri */}
 								<div className='flex items-center gap-2'>
 									<button
 										onClick={() => decrement(it.id)}
@@ -246,19 +248,25 @@ export default function EventPage() {
 										+
 									</button>
 								</div>
-								<div>Katkıda: {contributors || <span className='text-gray-400'>—</span>}</div>
-								<div>Ekleyen: {it.created_by || <span className='text-gray-400'>—</span>}</div>
+
+								{/* Orta: katkıda bulunanlar */}
+								<div className='flex-1'>Katkıda: {contributors || <span className='text-gray-400'>—</span>}</div>
+
+								{/* Sağ: ekleyen */}
+								<div className='text-right sm:text-left'>
+									Ekleyen: {it.created_by || <span className='text-gray-400'>—</span>}
+								</div>
 							</div>
 						</div>
 					);
 				})}
 
 				{/* Yeni ürün ekleme kartı */}
-				<div className='rounded-xl border bg-gray-50 p-3'>
-					<div className='flex items-center gap-2'>
+				<div className='w-full rounded-xl border bg-gray-50 p-3'>
+					<div className='flex flex-col sm:flex-row gap-2'>
 						<input
 							className='flex-1 rounded-lg border px-3 py-1.5'
-							placeholder='Yeni ürün (örn: Börek)'
+							placeholder='Yeni ürün (örn: Şakşuka)'
 							value={newItemLabel}
 							onChange={(e) => setNewItemLabel(e.target.value)}
 						/>
@@ -266,11 +274,11 @@ export default function EventPage() {
 							type='number'
 							min={1}
 							step={1}
-							className='w-20 rounded-lg border px-2 py-1'
+							className='w-full sm:w-20 rounded-lg border px-2 py-1'
 							value={newItemQty}
 							onChange={(e) => setNewItemQty(e.target.value)}
 						/>
-						<button onClick={addItem} className='rounded-lg border px-3 py-1.5 text-sm font-medium'>
+						<button onClick={addItem} className='w-full sm:w-auto rounded-lg border px-3 py-1.5 text-sm font-medium'>
 							Ekle
 						</button>
 					</div>
