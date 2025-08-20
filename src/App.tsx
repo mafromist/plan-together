@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function App() {
-	const [isDark, setIsDark] = useState(false);
+	// const [isDark, setIsDark] = useState(false);
 
 	useEffect(() => {
 		// İlk açılışta sistem tercihine bak
 		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		setIsDark(prefersDark);
+		// setIsDark(prefersDark);
 		if (prefersDark) {
 			document.documentElement.classList.add('dark');
 		} else {
@@ -17,7 +17,7 @@ export default function App() {
 		// Sistem teması değişirse dinle
 		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 		const handler = (e: MediaQueryListEvent) => {
-			setIsDark(e.matches);
+			// setIsDark(e.matches);
 			if (e.matches) {
 				document.documentElement.classList.add('dark');
 			} else {
