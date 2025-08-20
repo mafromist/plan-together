@@ -21,7 +21,7 @@ export default function EventPage() {
 		const v = localStorage.getItem('potluck_auto_claim');
 		return v === null ? true : v === 'true';
 	});
-	const [copied, setCopied] = useState<boolean>(false);
+	// const [copied, setCopied] = useState<boolean>(false);
 
 	async function addItem() {
 		if (!event) return;
@@ -129,11 +129,11 @@ export default function EventPage() {
 		return { mine, contribs };
 	}, [items, claims, myName]);
 
-	const copyLink = async () => {
-		await navigator.clipboard.writeText(window.location.href);
-		setCopied(true);
-		setTimeout(() => setCopied(false), 2000);
-	};
+	// const copyLink = async () => {
+	// 	await navigator.clipboard.writeText(window.location.href);
+	// 	setCopied(true);
+	// 	setTimeout(() => setCopied(false), 2000);
+	// };
 
 	const saveName = async () => {
 		if (!myName.trim()) return;
@@ -225,9 +225,9 @@ export default function EventPage() {
 			<div className='flex flex-col sm:flex-row items-center justify-between gap-3'>
 				<div>
 					<h1 className='text-xl font-bold'>{event.title}</h1>
-					<button onClick={copyLink} className='rounded-lg border px-2 py-1 text-xs'>
+					{/* <button onClick={copyLink} className='rounded-lg border px-2 py-1 text-xs'>
 						{copied ? 'Kopyalandı ✓' : 'Linki Kopyala'}
-					</button>
+					</button> */}
 				</div>
 				<div className='shrink-0 flex items-center gap-2'>
 					<p>Adın: </p>
