@@ -222,7 +222,7 @@ export default function EventPage() {
 	return (
 		<div className='space-y-4'>
 			{/* Üst bar */}
-			<div className='flex items-center justify-between gap-3'>
+			<div className='flex flex-col sm:flex-row items-center justify-between gap-3'>
 				<div>
 					<h1 className='text-xl font-bold'>{event.title}</h1>
 					<button onClick={copyLink} className='rounded-lg border px-2 py-1 text-xs'>
