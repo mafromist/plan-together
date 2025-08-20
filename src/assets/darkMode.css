@@ -1,0 +1,47 @@
+/* darkMode.css */
+:root {
+	--bg-color: #ffffff;
+	--text-color: #1f2937;
+	--card-bg: #f9fafb;
+	--card-border: #e5e7eb;
+	--muted-text: #6b7280;
+	--primary-color: #7c3aed; /* light purple */
+}
+
+.dark {
+	--bg-color: #18181b;
+	--text-color: #e5e7eb;
+	--card-bg: #27272a;
+	--card-border: #3f3f46;
+	--muted-text: #9ca3af;
+	--primary-color: #a78bfa; /* softer purple in dark */
+}
+
+/* Global apply */
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Card styling */
+.card {
+	background-color: var(--card-bg);
+	border: 1px solid var(--card-border);
+	border-radius: 0.75rem;
+	padding: 1rem;
+	transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Buttons */
+.btn-primary {
+	background-color: var(--primary-color);
+	color: white;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	font-weight: 600;
+	transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+	opacity: 0.9;
+}

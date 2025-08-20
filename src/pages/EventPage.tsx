@@ -224,24 +224,25 @@ export default function EventPage() {
 			{/* Üst bar */}
 			<div className='flex flex-col sm:flex-row items-center justify-between gap-3'>
 				<div>
-					<h1 className='text-xl font-bold'>{event.title}</h1>
-					{/* <button onClick={copyLink} className='rounded-lg border px-2 py-1 text-xs'>
-						{copied ? 'Kopyalandı ✓' : 'Linki Kopyala'}
-					</button> */}
+					<h1 className='text-xl font-bold text-gray-900 dark:text-gray-100'>{event.title}</h1>
 				</div>
 				<div className='shrink-0 flex items-center gap-2'>
-					<p>Adın: </p>
-					<span className='rounded-full bg-gray-900 text-white px-3 py-1 text-sm'>{myName}</span>
-					<button onClick={() => setEditingName(true)} className='text-sm underline'>
+					<p className='text-gray-700 dark:text-gray-300'>Adın: </p>
+					<span className='rounded-full bg-purple-600 text-white px-3 py-1 text-sm dark:bg-purple-400 dark:text-gray-900'>
+						{myName}
+					</span>
+					<button
+						onClick={() => setEditingName(true)}
+						className='text-sm text-purple-600 dark:text-purple-400 hover:underline'>
 						Adını Değiştir
 					</button>
 				</div>
 			</div>
 
 			{/* Tablo */}
-			<div className='overflow-x-auto rounded-xl border bg-white'>
+			<div className='overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900'>
 				<table className='w-full text-sm'>
-					<thead className='bg-gray-50 text-gray-600'>
+					<thead className='bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300'>
 						<tr>
 							<th className='p-2 text-left'>#</th>
 							<th className='p-2 text-left'>Gönülden Kopanlar</th>
@@ -259,11 +260,13 @@ export default function EventPage() {
 								.map(([n, q]) => `${n} x${q}`)
 								.join(', ');
 							return (
-								<tr key={it.id} className='border-t'>
-									<td className='p-2 font-semibold'>{idx + 1}</td>
+								<tr key={it.id} className='border-t border-gray-200 dark:border-gray-700'>
+									<td className='p-2 font-semibold text-gray-900 dark:text-gray-100'>{idx + 1}</td>
 									<td className='p-2 flex items-center justify-between gap-2'>
-										<span>{it.label}</span>
-										<button onClick={() => deleteItem(it.id)} className='shrink-0 rounded-lg border px-2 py-1 text-xs'>
+										<span className='text-gray-800 dark:text-gray-200'>{it.label}</span>
+										<button
+											onClick={() => deleteItem(it.id)}
+											className='shrink-0 rounded-lg border px-2 py-1 text-xs border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30'>
 											Sil
 										</button>
 									</td>
@@ -272,30 +275,41 @@ export default function EventPage() {
 											<button
 												onClick={() => decrement(it.id)}
 												disabled={mineCount <= 0}
-												className={`h-8 w-8 rounded-lg border text-lg leading-none ${
-													mineCount <= 0 ? 'opacity-50 cursor-not-allowed' : ''
-												}`}>
+												className={`h-8 w-8 rounded-lg border text-lg leading-none 
+                      border-gray-300 dark:border-gray-600 
+                      text-gray-800 dark:text-gray-200
+                      hover:bg-purple-50 dark:hover:bg-purple-900/30
+                      ${mineCount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}`}>
 												−
 											</button>
-											<span className='min-w-6 text-center'>{mineCount}</span>
+											<span className='min-w-6 text-center text-gray-900 dark:text-gray-100'>{mineCount}</span>
 											<button
 												onClick={() => increment(it.id)}
-												className='h-8 w-8 rounded-lg border text-lg leading-none'>
+												className='h-8 w-8 rounded-lg border text-lg leading-none
+                      border-gray-300 dark:border-gray-600 
+                      text-gray-800 dark:text-gray-200
+                      hover:bg-purple-50 dark:hover:bg-purple-900/30'>
 												+
 											</button>
 										</div>
 									</td>
-									<td className='p-2 text-gray-700'>{contributors || <span className='text-gray-400'>—</span>}</td>
-									<td className='p-2 text-gray-700'>{it.created_by || <span className='text-gray-400'>—</span>}</td>
+									<td className='p-2 text-gray-700 dark:text-gray-300'>
+										{contributors || <span className='text-gray-400'>—</span>}
+									</td>
+									<td className='p-2 text-gray-700 dark:text-gray-300'>
+										{it.created_by || <span className='text-gray-400'>—</span>}
+									</td>
 								</tr>
 							);
 						})}
 						{/* Yeni ürün ekleme satırı */}
-						<tr className='border-t bg-gray-50/50'>
-							<td className='p-2 text-gray-500'>—</td>
+						<tr className='border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50'>
+							<td className='p-2 text-gray-500 dark:text-gray-400'>—</td>
 							<td className='p-2'>
 								<input
-									className='w-full rounded-lg border px-3 py-1.5'
+									className='w-full rounded-lg border px-3 py-1.5 border-gray-300 dark:border-gray-600 
+                         bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 
+                         placeholder-gray-400 dark:placeholder-gray-500'
 									placeholder='Yeni ürün (örn: Börek)'
 									value={newItemLabel}
 									onChange={(e) => setNewItemLabel(e.target.value)}
@@ -308,17 +322,22 @@ export default function EventPage() {
 										min={1}
 										step={1}
 										inputMode='numeric'
-										className='w-20 rounded-lg border px-2 py-1'
+										className='w-20 rounded-lg border px-2 py-1 border-gray-300 dark:border-gray-600 
+                           bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100'
 										value={newItemQty}
 										onChange={(e) => setNewItemQty(e.target.value)}
 									/>
-									<button onClick={addItem} className='rounded-lg border px-3 py-1.5 text-sm font-medium'>
+									<button
+										onClick={addItem}
+										className='rounded-lg border px-3 py-1.5 text-sm font-medium 
+                           border-purple-500 text-purple-600 dark:border-purple-400 dark:text-purple-400 
+                           hover:bg-purple-50 dark:hover:bg-purple-900/30'>
 										Ekle
 									</button>
 								</div>
 							</td>
-							<td className='p-2 text-gray-500'>—</td>
-							<td className='p-2 text-gray-500'>—</td>
+							<td className='p-2 text-gray-500 dark:text-gray-400'>—</td>
+							<td className='p-2 text-gray-500 dark:text-gray-400'>—</td>
 						</tr>
 					</tbody>
 				</table>
