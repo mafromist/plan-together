@@ -12,6 +12,7 @@ export type Item = {
   label: string;
   requested_qty: number;
   created_at: string;
+  created_by: string;
 };
 
 export type Claim = {

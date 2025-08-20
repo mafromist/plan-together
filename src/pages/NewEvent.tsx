@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { slugify } from "../lib/slugify";
 import { useNavigate } from "react-router-dom";
